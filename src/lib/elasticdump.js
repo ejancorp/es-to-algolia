@@ -15,10 +15,10 @@ class ElasticDump {
     this.client = new elasticsearch.Client({
       hosts: [
         {
-          host: _.isNull(settings.host) ? 'localhost' : settings.host,
-          port: _.isNull(settings.port) ? 9200 : settings.port,
-          auth: _.isNull(settings.auth) ? '' : settings.auth,
-          protocol: _.isNull(settings.protocol) ? 'http' : settings.protocol,
+          host: _.isNull(settings.ELASTIC_HOST) ? 'localhost' : settings.ELASTIC_HOST,
+          port: _.isNull(settings.ELASTIC_PORT) ? 9200 : settings.ELASTIC_PORT,
+          auth: _.isNull(settings.ELASTIC_AUTH) ? '' : settings.ELASTIC_AUTH,
+          protocol: _.isNull(settings.ELASTIC_PROTOCOL) ? 'http' : settings.ELASTIC_PROTOCOL,
         },
       ],
       maxSockets: 10,
@@ -26,7 +26,7 @@ class ElasticDump {
       requestTimeout: Infinity,
       keepAlive: true,
       createNodeAgent(connection, config) {
-        if (settings.protocol == 'https') { return new AgentKeepAlive.HttpsAgent(connection.makeAgentConfig(config)); }
+        if (settings.ELASTIC_PROTOCOL == 'https') { return new AgentKeepAlive.HttpsAgent(connection.makeAgentConfig(config)); }
 
         return new AgentKeepAlive(connection.makeAgentConfig(config));
       },

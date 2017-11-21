@@ -29,17 +29,17 @@ var ElasticDump = function () {
 
     this.client = new _elasticsearch2.default.Client({
       hosts: [{
-        host: _lodash2.default.isNull(settings.host) ? 'localhost' : settings.host,
-        port: _lodash2.default.isNull(settings.port) ? 9200 : settings.port,
-        auth: _lodash2.default.isNull(settings.auth) ? '' : settings.auth,
-        protocol: _lodash2.default.isNull(settings.protocol) ? 'http' : settings.protocol
+        host: _lodash2.default.isNull(settings.ELASTIC_HOST) ? 'localhost' : settings.ELASTIC_HOST,
+        port: _lodash2.default.isNull(settings.ELASTIC_PORT) ? 9200 : settings.ELASTIC_PORT,
+        auth: _lodash2.default.isNull(settings.ELASTIC_AUTH) ? '' : settings.ELASTIC_AUTH,
+        protocol: _lodash2.default.isNull(settings.ELASTIC_PROTOCOL) ? 'http' : settings.ELASTIC_PROTOCOL
       }],
       maxSockets: 10,
       minSockets: 10,
       requestTimeout: Infinity,
       keepAlive: true,
       createNodeAgent: function createNodeAgent(connection, config) {
-        if (settings.protocol == 'https') {
+        if (settings.ELASTIC_PROTOCOL == 'https') {
           return new _agentkeepalive2.default.HttpsAgent(connection.makeAgentConfig(config));
         }
 
