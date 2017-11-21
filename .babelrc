@@ -1,0 +1,4 @@
+{
+  "plugins": ["syntax-dynamic-import", "transform-async-to-generator", "syntax-async-functions", "transform-regenerator"],
+  "presets": ["es2015"]
+}
