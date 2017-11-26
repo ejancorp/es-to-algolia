@@ -9,7 +9,11 @@
     "build": "npx babel ./src -d ./dist",
     "start": "node dist/app.js"
   },
-  "author": "",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/ejancorp/es-to-algolia.git"
+  },
+  "author": "Ej Corpuz",
   "license": "ISC",
   "dependencies": {
     "agentkeepalive": "^3.3.0",
